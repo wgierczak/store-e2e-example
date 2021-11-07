@@ -6,10 +6,10 @@ from store_tests.page_objects.product_page import ProductPage
 from store_tests.page_objects.results_page import ResultsPage
 
 
-@when('user search for shirt')
-def search_for_shirt(context):
+@when('user search for "{product_type}"')
+def search_for_shirt(context, product_type: str):
     header_elements = HeaderPage()
-    header_elements.provide_product_name_to_searchbar(Products.SHIRT.value)
+    header_elements.provide_product_name_to_searchbar(Products[product_type].value)
     header_elements.submit_search()
 
 
@@ -22,7 +22,7 @@ def open_product_details(context):
 def verify_shirt_is_available_in_results(context):
     results = ResultsPage()
     assert results.is_any_product_visible(), "No product is available"
-    assert results.is_product_valid_type(Products.SHIRT.value), \
+    assert results.is_product_type_valid(Products.SHIRT.value), \
         f"Different product was found - displayed product name: {results.get_product_name()}"
 
 

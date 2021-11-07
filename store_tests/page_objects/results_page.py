@@ -17,7 +17,7 @@ class ResultsPage(AbstractPage):
         self.product_container.hover_over_element()
         self.product_image_container.click()
 
-    def is_product_valid_type(self, desired_type_of_product: str) -> bool:
+    def is_product_type_valid(self, desired_type_of_product: str) -> bool:
         product_full_name = self.product_link.get_element_title()
         return desired_type_of_product in product_full_name
 
