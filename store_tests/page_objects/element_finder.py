@@ -23,6 +23,12 @@ class VisibilityElement(ElementFinder):
         super().__init__(ec.visibility_of_element_located((locator_strategy, locator)))
 
 
+class VisibilityAllElements(ElementFinder):
+
+    def __init__(self, locator_strategy: By, locator: str):
+        super().__init__(ec.visibility_of_any_elements_located((locator_strategy, locator)))
+
+
 class ClickableElement(ElementFinder):
 
     def __init__(self, locator_strategy: By, locator: str):
