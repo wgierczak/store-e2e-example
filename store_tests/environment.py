@@ -1,3 +1,4 @@
+# pylint: disable=unused-argument
 from store_tests.config.configuration import Configuration
 from store_tests.config.web_driver import WebDriver
 from store_tests.page_objects.main_page import MainPage
