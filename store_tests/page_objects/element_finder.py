@@ -17,10 +17,10 @@ class ElementFinder:
         return self.web_driver_wait.until(self.condition)
 
 
-class VisibilityAllElements(ElementFinder):
+class VisibilityElement(ElementFinder):
 
     def __init__(self, locator_strategy: By, locator: str):
-        super().__init__(ec.visibility_of_any_elements_located((locator_strategy, locator)))
+        super().__init__(ec.visibility_of_element_located((locator_strategy, locator)))
 
 
 class ClickableElement(ElementFinder):
