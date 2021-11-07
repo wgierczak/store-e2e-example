@@ -7,7 +7,8 @@ class ResultsPage(AbstractPage):
     def __init__(self):
         super().__init__()
         self.product_container = ElementByClass('product-container')
-        self.product_image_container = ElementByClass('lnk_view')
+        self.more_details_button = ElementByClass('lnk_view')
+        self.add_to_cart_button = ElementByClass('ajax_add_to_cart_button')
         self.product_link = ElementByClass('product_img_link')
 
     def is_any_product_visible(self) -> bool:
@@ -15,7 +16,11 @@ class ResultsPage(AbstractPage):
 
     def open_first_product(self):
         self.product_container.hover_over_element()
-        self.product_image_container.click()
+        self.more_details_button.click()
+
+    def add_first_product_to_cart(self):
+        self.product_container.hover_over_element()
+        self.add_to_cart_button.click()
 
     def is_product_type_valid(self, desired_type_of_product: str) -> bool:
         product_full_name = self.product_link.get_element_title()

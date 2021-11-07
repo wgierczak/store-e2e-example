@@ -17,7 +17,7 @@ def before_scenario(context, scenario):
     main_page = MainPage()
     main_page.open()
     main_page.clear_webpage_cookies()
-    context.scenario_name = scenario.name
+    context.cart = []
 
 
 def after_feature(context, feature):
