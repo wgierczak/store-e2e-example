@@ -10,6 +10,15 @@ class WebDriver:
     def start_driver(configuration: Configuration):
         WebDriver.driver = WebDriverConfigurator(configuration).provide_driver()
 
+    @staticmethod
+    def get_driver():
+        return WebDriver.driver
+
+    @staticmethod
+    def stop():
+        if WebDriver.driver:
+            WebDriver.driver.quit()
+
 
 class WebDriverConfigurator:
 
