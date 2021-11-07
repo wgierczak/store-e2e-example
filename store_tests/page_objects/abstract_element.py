@@ -30,3 +30,9 @@ class AbstractElement:
         for char in text_to_send:
             sleep(typing_speed)
             selected_input.send_keys(char)
+
+
+class ElementById(AbstractElement):
+
+    def __init__(self, element_id: str):
+        super().__init__(By.ID, element_id)
