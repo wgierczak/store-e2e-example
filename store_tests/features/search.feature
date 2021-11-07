@@ -4,5 +4,5 @@ Feature: Search feature
   Scenario: User is looking for shirt
     When user search for shirt
     Then shirt is available in results
-    When user click on search
+    When user click on product
     Then details of product are displayed
