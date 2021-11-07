@@ -36,3 +36,9 @@ class ElementById(AbstractElement):
 
     def __init__(self, element_id: str):
         super().__init__(By.ID, element_id)
+
+
+class ElementByClass(AbstractElement):
+
+    def __init__(self, element_class: str):
+        super().__init__(By.CLASS_NAME, element_class)
