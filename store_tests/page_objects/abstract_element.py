@@ -26,9 +26,12 @@ class AbstractElement:
     def get_clickable_element(self) -> WebElement:
         return ClickableElement(self.locator_strategy, self.locator).create()
 
-    def is_visible(self) -> bool:
+    def is_visible(self, index: Optional[int] = None) -> bool:
         try:
-            is_element_visible = self.get_element().is_displayed()
+            if index is None:
+                is_element_visible = self.get_element().is_displayed()
+            else:
+                is_element_visible = self.get_list_of_elements()[index].is_displayed()
             return is_element_visible
         except(NoSuchElementException, TimeoutException):
             return False
@@ -39,8 +42,10 @@ class AbstractElement:
         else:
             self.get_list_of_elements()[index].click()
 
-    def get_element_title(self) -> str:
-        return self.get_element().get_attribute('title')
+    def get_element_title(self, index: Optional[int] = None) -> str:
+        if index is None:
+            return self.get_element().get_attribute('title')
+        return self.get_list_of_elements()[index].get_attribute('title')
 
     def get_element_value(self, index: Optional[int] = None) -> str:
         if index is None:
@@ -55,9 +60,19 @@ class AbstractElement:
             sleep(typing_speed)
             selected_input.send_keys(char)
 
-    def hover_over_element(self):
-        hover = ActionChains(self.driver).move_to_element(self.get_element())
+    def hover_over_element(self, index: Optional[int] = None):
+        if index is None:
+            hover = ActionChains(self.driver).move_to_element(self.get_element())
+        else:
+            hover = ActionChains(self.driver).move_to_element(self.get_list_of_elements()[index])
         hover.perform()
+
+    def get_text(self, index: Optional[int] = None) -> str:
+        if index is None:
+            text = self.get_element().text
+        else:
+            text = self.get_list_of_elements()[index].text
+        return text
 
 
 class ElementById(AbstractElement):
