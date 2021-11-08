@@ -8,6 +8,7 @@ Feature: Cart feature
     And user adds product to cart
     And user opens checkout sections
     And user change quantity of "SHIRT" to "2"
+    Then quantity of "SHIRT" is "2"
     Then number of unique products in cart is "2"
     When user removes "DRESS" from cart
     Then number of unique products in cart is "1"

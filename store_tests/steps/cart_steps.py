@@ -36,6 +36,14 @@ def remove_product_from_cart(context, product_name: str):
     CartPage(context, product_to_remove_index).remove_item()
 
 
+@then('quantity of "{product_name}" is "{quantity_of_product:d}"')
+def verify_quantity_of_product(context, product_name: str, quantity_of_product: int):
+    product_to_check_index = CartPage(context).get_product_index(Products[product_name].value)
+    actual_item_quantity = CartPage(context, product_to_check_index).get_item_quantity()
+    assert actual_item_quantity == quantity_of_product, f"Expected quantity of product is: {quantity_of_product}, " \
+                                                        f"displayed quantity is: {actual_item_quantity}"
+
+
 @then('number of unique products in cart is "{number_of_products:d}"')
 def verify_number_of_products_in_cart(context, number_of_products: int):
     displayed_items_quantity = CartPage(context).get_number_of_items()
