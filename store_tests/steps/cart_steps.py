@@ -12,7 +12,7 @@ from store_tests.page_objects.results_page import ResultsPage
 @when('user adds product to cart')
 def add_product_to_cart(context):
     results = ResultsPage()
-    results.add_first_product_to_cart()
+    results.add_product_to_cart()
     AddedItemModalPage().close_modal()
     context.cart.append(results.get_product_name())
 

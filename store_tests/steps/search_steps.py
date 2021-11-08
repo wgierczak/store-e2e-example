@@ -15,7 +15,7 @@ def search_for_shirt(context, product_type: str):
 
 @when('user click on product')
 def open_product_details(context):
-    ResultsPage().open_first_product()
+    ResultsPage().open_product()
 
 
 @then('shirt is available in results')
