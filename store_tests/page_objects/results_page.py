@@ -16,7 +16,6 @@ class ResultsPage(AbstractPage):
         self.add_to_compare_button = ElementByClass('add_to_compare')
         self.compare_button = ElementByClass('bt_compare')
         self.quantity_of_products_to_compare = ElementByClass('total-compare-val')
-        self.sort_dropdown = ElementById('uniform-selectProductSort')
         self.sort_options_desc = "#selectProductSort > option:nth-child(3)"
         self.product_price = ElementByXpath('//div[@class="product-container"]//span[@class="price product-price"]')
 
