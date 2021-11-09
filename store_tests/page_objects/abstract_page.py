@@ -1,4 +1,5 @@
 from selenium.common.exceptions import TimeoutException
+from selenium.webdriver import ActionChains
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.wait import WebDriverWait
 
@@ -25,6 +26,12 @@ class AbstractPage:
         self.go_to_url(domain)
         self.wait_for_url_contains(domain)
         self.driver.delete_all_cookies()
+
+    def run_javascript(self, script: str):
+        self.driver.execute_script(script)
+
+    def click_on_blank_space(self):
+        ActionChains(self.driver).move_by_offset(0, 0).click().perform()
 
     def __wait_for_url(self, expected_condition: ec, url: str, timeout: int, raise_exception: bool) -> bool:
         try:
