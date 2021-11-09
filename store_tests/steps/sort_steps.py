@@ -16,6 +16,7 @@ def verify_sort_desc(context):
         if sorted_prices[index] >= sorted_prices[index+1]:
             sort_result = True
         else:
+            sort_result = False
             break
 
     assert sort_result, "Products were not sorted properly"
