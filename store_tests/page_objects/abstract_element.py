@@ -91,3 +91,8 @@ class ElementByXpath(AbstractElement):
 
     def __init__(self, element_xpath: str):
         super().__init__(By.XPATH, element_xpath)
+
+
+class ElementByPartialLink(AbstractElement):
+    def __init__(self, element_xpath: str):
+        super().__init__(By.PARTIAL_LINK_TEXT, element_xpath)

@@ -1,7 +1,7 @@
-from typing import Optional
+from typing import Optional, List
 
 from store_tests.conditions.wait_until import wait_until
-from store_tests.page_objects.abstract_element import ElementByClass
+from store_tests.page_objects.abstract_element import ElementByClass, ElementById, ElementByXpath
 from store_tests.page_objects.abstract_page import AbstractPage
 
 
@@ -16,9 +16,14 @@ class ResultsPage(AbstractPage):
         self.add_to_compare_button = ElementByClass('add_to_compare')
         self.compare_button = ElementByClass('bt_compare')
         self.quantity_of_products_to_compare = ElementByClass('total-compare-val')
+        self.sort_options_desc = "#selectProductSort > option:nth-child(3)"
+        self.product_price = ElementByXpath('//div[@class="product-container"]//span[@class="price product-price"]')
 
     def is_any_product_visible(self) -> bool:
         return self.product_container.is_visible()
+
+    def get_number_of_products(self) -> len:
+        return len(self.product_container.get_list_of_elements())
 
     def open_product(self, index: Optional[int] = None):
         self.product_container.hover_over_element(index)
@@ -47,3 +52,20 @@ class ResultsPage(AbstractPage):
 
     def open_compare_page(self):
         self.compare_button.click()
+
+    def sort_by_highest_first(self):
+        sorted_url = self.get_url() + '&orderby=price&orderway=desc'
+        self.go_to_url(sorted_url)
+
+    def get_price_without_currency(self, index: Optional[int] = None) -> float:
+        string_price = self.product_price.get_text(index)
+        price = float(string_price.replace("$", ''))
+        return price
+
+    def get_all_prices(self) -> List[float]:
+        number_of_products = self.get_number_of_products()
+        all_prices = []
+        for index in range(0, number_of_products):
+            self.get_price_without_currency(index)
+            all_prices.append(self.get_price_without_currency(index))
+        return all_prices
