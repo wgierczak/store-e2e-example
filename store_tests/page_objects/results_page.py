@@ -1,7 +1,7 @@
 from typing import Optional, List
 
 from store_tests.conditions.wait_until import wait_until
-from store_tests.page_objects.abstract_element import ElementByClass, ElementById, ElementByXpath
+from store_tests.page_objects.abstract_element import ElementByClass, ElementByXpath
 from store_tests.page_objects.abstract_page import AbstractPage
 
 
