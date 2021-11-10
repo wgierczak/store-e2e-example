@@ -1,8 +1,9 @@
 # End to end store tests
 
 This is repository containing end-to-end tests example preformed on [automation practice page](http://automationpractice.com/)  
-Recording of execution of tests is uploaded here: [tests execution recording](https://youtu.be/lljtMUfXUhA)
+Recording of execution of tests is uploaded here: [tests execution recording](https://youtu.be/lljtMUfXUhA)  
 
+#### Things to be tested during using cart and checkout: [test plans](https://github.com/wgierczak/store-e2e-example/blob/main/test_plans.md)
 ### Execution on local machine
 
 #### Requirements
