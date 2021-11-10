@@ -1,6 +1,7 @@
 # End to end store tests
 
-This is repository containing end-to-end tests example preformed on [automation practice page](http://automationpractice.com/) 
+This is repository containing end-to-end tests example preformed on [automation practice page](http://automationpractice.com/)  
+Recording of execution of tests is uploaded here: [tests execution recording](https://youtu.be/lljtMUfXUhA)
 
 ### Execution on local machine
 
@@ -20,7 +21,7 @@ This is repository containing end-to-end tests example preformed on [automation 
 pip3 install -r requirements.txt
 ``` 
 * Install [Chrome](https://www.google.com/intl/pl/chrome/) browser 
-* Install [Chromedriver](https://chromedriver.chromium.org/home), on macOS if you have homeBrew installed you can use
+* Install [Chromedriver](https://chromedriver.chromium.org/home), on macOS, if you have homeBrew installed you can use
 ```
 brew install --cask chromedriver
 ```
