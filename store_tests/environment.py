@@ -6,9 +6,6 @@ from store_tests.page_objects.main_page import MainPage
 
 def before_all(context):
     context.configuration = Configuration()
-
-
-def before_feature(context, feature):
     WebDriver.start_driver(context.configuration)
     context.driver = WebDriver.get_driver()
 
@@ -20,5 +17,5 @@ def before_scenario(context, scenario):
     context.cart = []
 
 
-def after_feature(context, feature):
+def after_all(context):
     WebDriver.stop()
